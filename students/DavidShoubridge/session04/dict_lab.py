@@ -97,4 +97,13 @@ print(s4.issubset(s2))
 Step 5
 """
 
+monty = set("python")
 
+monty.add("i")
+print(monty)
+
+let_it_go = frozenset("marathon")
+print(let_it_go)
+
+print monty.union(let_it_go)
+print monty.intersection(let_it_go)
