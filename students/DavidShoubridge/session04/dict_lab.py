@@ -1,3 +1,6 @@
+"""
+Step 1
+"""
 new_dictionary = {"name": "Michael", "city": "Seattle", "cake": "Chocolate"}
 
 print(new_dictionary)
@@ -23,6 +26,9 @@ for value in new_dictionary.values():
     if value == "Mango":
         print("We've got %s's." % (value))
 
+"""
+Step 2
+"""
 
 my_numbers = list(range(0, 16))
 my_letters = list("ABCDEFGHIJKLMNOP")
@@ -33,6 +39,9 @@ combined_dict = dict(zip(my_numbers, my_letters))
 
 print(combined_dict)
 
+"""
+Step 3
+"""
 
 dict_update = dict(new_dictionary)  # Copy original list.
 
@@ -44,3 +53,48 @@ for key, value in dict_update.items():  # Value == number of 'a's in value
         dict_update[key] = number_a
 
 print dict_update
+
+"""
+Step 4
+"""
+
+s2 = set(range(0, 21))
+
+tuple_2 = tuple(s2)
+for number in tuple_2:
+    if number % 2 != 0:
+        s2.remove(number)
+
+print(s2)
+
+
+s3 = set(range(0, 21))
+
+tuple_3 = tuple(s3)
+
+for number in tuple_3:
+    if number % 3 != 0:
+        s3.remove(number)
+
+print(s3)
+
+
+s4 = set(range(0, 21))
+
+tuple_4 = tuple(s4)
+
+for number in tuple_4:
+    if number % 4 != 0:
+        s4.remove(number)
+
+print(s4)
+
+print(s3.issubset(s2))
+
+print(s4.issubset(s2))
+
+"""
+Step 5
+"""
+
+
