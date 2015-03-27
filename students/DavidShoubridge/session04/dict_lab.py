@@ -22,3 +22,13 @@ print(new_dictionary.get("cake"))
 for value in new_dictionary.values():
     if value == "Mango":
         print("We've got %s's." % (value))
+
+
+my_numbers = list(range(0, 16))
+my_letters = list("ABCDEFGHIJKLMNOP")
+print(my_numbers)
+print(my_letters)
+
+combined_dict = dict(zip(my_numbers, my_letters))
+
+print(combined_dict)
