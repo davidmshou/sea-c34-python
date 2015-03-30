@@ -1,6 +1,6 @@
-def safe_input():
-    user_input = raw_input("Give me a word, phrase, or number: ")
+def safe_input(user_prompt):
+    try:
+        raw_input(user_prompt)
+    except(KeyboardInterrupt, EOFError):
+        return "None"
 
-    
-
-safe_input()
