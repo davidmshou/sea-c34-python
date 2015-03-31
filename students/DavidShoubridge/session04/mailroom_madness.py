@@ -1,4 +1,5 @@
 from __future__ import print_function
+import numpy
 import sys
 
 donor_dict = {"John Doe": [10000, 5000, 30000], "Jane Johns": [25000, 10000], "Buster Bluth": [80000, 100000]}
@@ -23,7 +24,14 @@ def select_operation():
 def donor_list():
     """Print donor list
     """
-    print(donor_dict)
+    donor_list = []
+
+    for donor, value in donor_dict.items():
+        donor_list.append([donor, value, "Total Donated: %i" % (sum(value)), "Average Donation: %i" % (numpy.mean(value))])
+    donor_list.sort()
+
+    print(donor_list)
+
     select_operation()
 
 
