@@ -24,13 +24,18 @@ def select_operation():
 def donor_list():
     """Print donor list
     """
-    donor_list = []
+    donors = []
 
     for donor, value in donor_dict.items():
-        donor_list.append([donor, value, "Total Donated: %i" % (sum(value)), "Average Donation: %i" % (numpy.mean(value))])
-    donor_list.sort()
+        total = sum(value)
+        average = numpy.mean(value)
+        # "Total Donated: %i" % total, "Average Donation: %i" % (numpy.mean(value))
+        donors.append([donor, value, len(value), total, average])
 
-    print(donor_list)
+    donors.sort(key=lambda x: x[3], reverse=True)
+
+    for donor in donors:
+        print(donor)
 
     select_operation()
 
