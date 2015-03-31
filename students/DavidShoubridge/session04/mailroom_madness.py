@@ -29,9 +29,16 @@ def donor_list():
     for donor, value in donor_dict.items():
         total = sum(value)
         average = numpy.mean(value)
+        number_of_donations = len(value)
         # "Total Donated: %i" % total, "Average Donation: %i" % (numpy.mean(value))
-        donors.append([donor, value, len(value), total, average])
-
+        donors.append(
+            [
+                "Name: %s" % (donor), value,
+                "Donations: %i" % (number_of_donations),
+                "Total Donated: %f" % (total), "Average amount donated: %f" %
+                (average)
+            ]
+        )
     donors.sort(key=lambda x: x[3], reverse=True)
 
     for donor in donors:
