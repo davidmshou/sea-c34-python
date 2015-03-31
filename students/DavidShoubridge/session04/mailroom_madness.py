@@ -2,19 +2,24 @@ from __future__ import print_function
 import numpy
 import sys
 
-donor_dict = {"John Doe": [10000, 5000, 30000], "Jane Johns": [25000, 10000], "Buster Bluth": [80000, 100000]}
+donor_dict = {
+    "John Doe": [10000, 5000, 30000], "Jane Johns": [25000, 10000],
+    "Buster Bluth": [80000, 100000]
+}
 
 
 def select_operation():
     """Request input from user.
     """
-    user_input = raw_input(u"Enter: (c)reate a report, (s)end thank you, or (q)uit: ")
+    user_input = raw_input(
+        u"Enter: (C)reate a report, (S)end thank you, or (Q)uit: "
+    )
 
-    if user_input.lower() == u"c":
+    if user_input.lower() == u"c" or user_input.lower() == u"create a report":
         donor_list()
-    elif user_input.lower() == u"s":
+    elif user_input.lower() == u"s" or user_input.lower() == u"send thank you":
         name_prompt()
-    elif user_input.lower() == u"q":
+    elif user_input.lower() == u"q" or user_input.lower() == u"quit":
         sys.exit(u"Have a good day, sir.")
     else:
         print(u"Please select (c)reate a report or (s)end thank-you.")
@@ -30,12 +35,11 @@ def donor_list():
         total = sum(value)
         average = numpy.mean(value)
         number_of_donations = len(value)
-        # "Total Donated: %i" % total, "Average Donation: %i" % (numpy.mean(value))
         donors.append(
             [
                 "Name: %s" % (donor), value,
                 "Donations: %i" % (number_of_donations),
-                "Total Donated: %f" % (total), "Average amount donated: %f" %
+                total, "Average amount donated: %f" %
                 (average)
             ]
         )
@@ -50,14 +54,16 @@ def donor_list():
 def name_prompt():
     """Prompt user for name of donor, or list of donors.
     """
-    user_input = raw_input(u"Please enter donor's name, (l)ist, or (q)uit: ")
+    user_input = raw_input(u"Please enter Donor's name, (L)ist, (M)ain menu, or (Q)uit: ")
     donor_tuple = tuple(donor_dict)
 
-    if user_input.lower() == "l":
+    if user_input.lower() == u"l" or user_input.lower() == u"list":
         print(donor_dict.keys())
         name_prompt()
-    elif user_input.lower() == "q":
+    elif user_input.lower() == u"q" or user_input.lower() == u"quit":
         sys.exit(0)
+    elif user_input.lower() == u"m" or user_input.lower() == u"main menu":
+        select_operation()
     else:
         for key in donor_tuple:
             if user_input.lower() == key.lower():
@@ -72,16 +78,23 @@ def name_prompt():
 
 def donation_amount(donor):
     donation_input = raw_input(u"Enter donation amount: ")
-    donation_int = int(donation_input)
+
+    donation_float = float(donation_input)
+
+    # if donation_input != float:
+        # print(u"Only numbers are valid, please try again.")
+        # select_operation()
 
     if donor in donor_dict:
-        donor_dict[donor].append(donation_int)
-        email_format(donor, donation_int)
+        donor_dict[donor].append(donation_float)
+        email_format(donor, donation_float)
 
 
 def email_format(donor, amount):
-    print(u"Hello, %s! Thank you for your donation of %i" % (donor, amount))
+    print(u"Hello, %s! Thank you for your donation of %f" % (donor, amount))
 
 if __name__ == "__main__":
+    print(u"Mailroom Madness")
+
     while True:
         select_operation()
