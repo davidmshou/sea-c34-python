@@ -8,11 +8,20 @@ donor_dict = {
 }
 
 
+def safe_input(user_prompt):
+    try:
+        user_input = raw_input(user_prompt)
+    except(KeyboardInterrupt, EOFError):
+        return "None"
+    else:
+        return user_input
+
+
 def select_operation():
     """Request input from user, which will either create a report or send a \
     thank-you.
     """
-    user_input = raw_input(
+    user_input = safe_input(
         u"Enter: (C)reate a report, (S)end thank you, or (Q)uit: "
     )
 
@@ -55,7 +64,7 @@ def name_prompt():
     """
     Prompt user for name of donor, or list of donors.
     """
-    user_input = raw_input(u"Please enter Donor's name, (L)ist, (M)ain menu, or (Q)uit: ")
+    user_input = safe_input(u"Please enter Donor's name, (L)ist, (M)ain menu, or (Q)uit: ")
     donor_tuple = tuple(donor_dict)
 
     if user_input.lower() == u"l" or user_input.lower() == u"list":
@@ -81,13 +90,12 @@ def donation_amount(donor):
     """
     Prompt user for donation amount, then adds it to donors 'file'.
     """
-    donation_input = raw_input(u"Enter donation amount: ")
+    donation_input = safe_input(u"Enter donation amount: ")
 
     try:
         donation_input = float(donation_input)
     except (TypeError, ValueError):
         print("Only numbers are valid, returning to menu.")
-        donation
         name_prompt()
     else:
         if donor in donor_dict:
