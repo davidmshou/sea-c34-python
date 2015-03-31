@@ -9,7 +9,8 @@ donor_dict = {
 
 
 def select_operation():
-    """Request input from user.
+    """Request input from user, which will either create a report or send a \
+    thank-you.
     """
     user_input = raw_input(
         u"Enter: (C)reate a report, (S)end thank you, or (Q)uit: "
@@ -27,8 +28,7 @@ def select_operation():
 
 
 def donor_list():
-    """Print donor list
-    """
+    """Sorts donor list and sorts by total donation."""
     donors = []
 
     for donor, value in donor_dict.items():
@@ -52,7 +52,8 @@ def donor_list():
 
 
 def name_prompt():
-    """Prompt user for name of donor, or list of donors.
+    """
+    Prompt user for name of donor, or list of donors.
     """
     user_input = raw_input(u"Please enter Donor's name, (L)ist, (M)ain menu, or (Q)uit: ")
     donor_tuple = tuple(donor_dict)
@@ -77,20 +78,27 @@ def name_prompt():
 
 
 def donation_amount(donor):
+    """
+    Prompt user for donation amount, then adds it to donors 'file'.
+    """
     donation_input = raw_input(u"Enter donation amount: ")
 
-    donation_float = float(donation_input)
-
-    # if donation_input != float:
-        # print(u"Only numbers are valid, please try again.")
-        # select_operation()
-
-    if donor in donor_dict:
-        donor_dict[donor].append(donation_float)
-        email_format(donor, donation_float)
+    try:
+        donation_input = float(donation_input)
+    except (TypeError, ValueError):
+        print("Only numbers are valid, returning to menu.")
+        donation
+        name_prompt()
+    else:
+        if donor in donor_dict:
+            donor_dict[donor].append(donation_input)
+            email_format(donor, donation_input)
 
 
 def email_format(donor, amount):
+    """
+    Creates thank you email based on donor name and amount given previously.
+    """
     print(u"Hello, %s! Thank you for your donation of %f" % (donor, amount))
 
 if __name__ == "__main__":
