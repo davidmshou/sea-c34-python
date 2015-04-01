@@ -53,8 +53,17 @@ def num_a():
     print(number_a)
 
 
+def set_comp():
+    numbers = range(0, 21)
+
+    s2 = {number for number in numbers if number % 2 == 0}
+    s3 = {number for number in numbers if number % 3 == 0}
+    s4 = {number for number in numbers if number % 4 == 0}
+    print(s2, s3, s4)
+
 if __name__ == "__main__":
     print_string()
     zip_lists()
     dict_comp()
     num_a()
+    set_comp()
