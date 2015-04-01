@@ -3,8 +3,8 @@ import numpy
 import sys
 
 donor_dict = {
-    "John Doe": [10000, 5000, 30000], "Jane Johns": [25000, 10000],
-    "Buster Bluth": [80000, 100000]
+    "John Doe": [10000.00, 5000.00, 30000.00], "Jane Johns": [25000.00, 10000.00],
+    "Buster Bluth": [80000.00, 100000.00]
 }
 
 
@@ -46,18 +46,27 @@ def donor_list():
         number_of_donations = len(value)
         donors.append(
             [
-                "Name: %s" % (donor), value,
-                "Donations: %i" % (number_of_donations),
-                total, "Average amount donated: %f" %
-                (average)
+                donor, number_of_donations,
+                total, average
             ]
         )
     donors.sort(key=lambda x: x[3], reverse=True)
 
-    for donor in donors:
-        print(donor)
+    print(
+        "{:15s} {:15s} {:15s} {:15s}\n".format(
+            "Name", "Total Donations", "Donation Sum",
+            "Av. Donation"
+        )
+    )
+    for i in donors:
+        print(
+            "{:15s} {:<15d} {:<15,.2f} {:<15,.2f}".format(
+                i[0], i[1], i[2], i[3]
+            )
+        )
+    print("\n\n")
 
-    select_operation()
+select_operation()
 
 
 def name_prompt():
