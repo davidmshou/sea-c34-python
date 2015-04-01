@@ -2,8 +2,8 @@ from __future__ import print_function
 
 
 def count_evens(nums):
-    evens += [1 for number in nums if number % 2 == 0]
-    return evens
+    evens = [number for number in nums if number % 2 == 0]
+    return len(evens)
 
 
 if __name__ == "__main__":
