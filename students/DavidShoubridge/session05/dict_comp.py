@@ -33,7 +33,10 @@ def dict_comp():
     """
     Recreates the above dict using only dict comprehension.
     """
-    num_letter = {number: letter for number, letter in zip(range(0,16), "abcdefghijklmnop")}
+    num_letter = {
+        number: letter for number, letter in
+        zip(range(0, 16), "abcdefghijklmnop")
+    }
     print(num_letter)
 
 
