@@ -51,17 +51,17 @@ def donor_list():
                 total, average
             ]
         )
-    donors.sort(key=lambda x: x[3], reverse=True)
+    donors.sort(key=lambda x: x[2], reverse=True)
 
     print(
-        "{:15s} {:15s} {:15s} {:15s}\n".format(
-            "Name", "Total Donations", "Donation Sum",
+        "{:15s} {:20s} {:20s} {:20s}\n".format(
+            "Name", "Num. Donations", "Donation Total",
             "Av. Donation"
         )
     )
     for i in donors:
         print(
-            "{:15s} {:<15d} {:<15,.2f} {:<15,.2f}".format(
+            "{:15s} {:<20d} {:<20,.2f} {:<20,.2f}".format(
                 i[0], i[1], i[2], i[3]
             )
         )
@@ -72,11 +72,13 @@ def donor_list():
 
 def name_prompt():
     """
-    Prompt user for name of donor, or list of donors.
+    Prompt user for name of donor then use that donor, or give a \
+    list of donors.
     """
     user_input = safe_input(
         u"Please enter Donor's name, (L)ist, (M)ain menu, or (Q)uit: "
     )
+    user_input = user_input.title()
 
     if user_input.lower() == u"l" or user_input.lower() == u"list":
         print(donor_dict.keys())
