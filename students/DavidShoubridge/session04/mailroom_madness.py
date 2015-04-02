@@ -3,7 +3,8 @@ import numpy
 import sys
 
 donor_dict = {
-    "John Doe": [10000.00, 5000.00, 30000.00], "Jane Johns": [25000.00, 10000.00],
+    "John Doe": [10000.00, 5000.00, 30000.00],
+    "Jane Johns": [25000.00, 10000.00],
     "Buster Bluth": [80000.00, 100000.00]
 }
 
@@ -21,7 +22,9 @@ def select_operation():
     """Request input from user, which will either create a report or send a \
     thank-you.
     """
-    user_input = safe_input(u"Enter: (C)reate a report, (S)end thank you, or (Q)uit: ")
+    user_input = safe_input(
+        u"Enter: (C)reate a report, (S)end thank you, or (Q)uit: "
+    )
 
     if user_input.lower() == u"c" or user_input.lower() == u"create a report":
         donor_list()
