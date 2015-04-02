@@ -74,8 +74,7 @@ def name_prompt():
     user_input = safe_input(
         u"Please enter Donor's name, (L)ist, (M)ain menu, or (Q)uit: "
     )
-    #donor_tuple = tuple(donor_dict)
-    #print(donor_tuple)
+
     if user_input.lower() == u"l" or user_input.lower() == u"list":
         print(donor_dict.keys())
         name_prompt()
@@ -84,17 +83,11 @@ def name_prompt():
     elif user_input.lower() == u"m" or user_input.lower() == u"main menu":
         select_operation()
     else:
-        for key in donor_tuple:
-            if user_input.lower() == key.lower():
-                print("Donor in database")
-                donation_amount(user_input)
-                break
-            else:
-                if user_input.lower() != key.lower():
-                    print("Donor not in database")
-                    donor_dict[user_input] = []
-                    donation_amount(user_input)
-                break
+        if user_input in donor_dict:
+            donation_amount(user_input)
+        else:
+            donor_dict[user_input] = []
+            donation_amount(user_input)
 
 
 def donation_amount(donor):
