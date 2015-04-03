@@ -1,7 +1,7 @@
 """
 Step 1
 """
-new_dictionary = {"name": "Michael", "city": "Seattle", "cake": "Chocolate"}
+new_dictionary = {"name": "Michael", "city": "Seaattle", "cake": "Chocolate"}
 
 print(new_dictionary)
 
@@ -48,15 +48,14 @@ Step 3
 """
 
 dict_update = dict(new_dictionary)  # Copy original list.
+dictionary_2 = list(dict_update.values())
+number_a = []
 
+for x in dictionary_2:
+    number_a.append(x.count('a'))
 
-for key, value in dict_update.items():  # Value == number of 'a's in value
-    number_a = 0
-    if "a" in value:
-        number_a += 1
-        dict_update[key] = number_a
-
-print dict_update
+dictionary_3 = dict(zip(dictionary_2, number_a))
+print(dictionary_3)
 
 """
 Step 4
