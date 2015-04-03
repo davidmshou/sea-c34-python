@@ -15,8 +15,10 @@ def print_string():
                   u"pasta": u"pizza"}
 
     print(
-        u"{name} is from {city}, and he likes {cake} cake, {fruit} fruit, {salad} salad, and {pasta} pasta.".format(**food_prefs)
+        u"{name} is from {city}, and he likes {cake} cake, {fruit} fruit, {sal"
+        u"ad} salad, and {pasta} pasta.".format(**food_prefs)
     )
+
 """Task2"""
 
 
