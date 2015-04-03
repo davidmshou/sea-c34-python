@@ -31,7 +31,11 @@ Step 2
 """
 
 my_numbers = list(range(0, 16))
-my_letters = list("ABCDEFGHIJKLMNOP")
+my_letters = []
+
+for num in my_numbers:
+    my_letters.append(hex(my_numbers[num]))
+
 print(my_numbers)
 print(my_letters)
 
@@ -97,7 +101,7 @@ print(s4.issubset(s2))
 Step 5
 """
 
-monty = set("python")
+monty = set("Python")
 
 monty.add("i")
 print(monty)
