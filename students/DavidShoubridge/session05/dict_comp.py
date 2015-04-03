@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+"""Task1"""
+
 
 def print_string():
     """
@@ -15,6 +17,7 @@ def print_string():
     print(
         u"{name} is from {city}, and he likes {cake} cake, {fruit} fruit, {salad} salad, and {pasta} pasta.".format(**food_prefs)
     )
+"""Task2"""
 
 
 def zip_lists():
@@ -22,22 +25,24 @@ def zip_lists():
     Creates a dict from 2 lists and then prints.
     """
     numbers = [number for number in range(0, 16)]
-    letters = [letter for letter in "abcdefghijklmnop"]
+    letters = [hex(number) for number in (range(16))]
 
     num_letter = dict(zip(numbers, letters))
 
     print(num_letter)
 
 
+"""Task 3"""
+
+
 def dict_comp():
     """
     Recreates the above dict using only dict comprehension.
     """
-    num_letter = {
-        number: letter for number, letter in
-        zip(range(0, 16), "abcdefghijklmnop")
-    }
+    num_letter = {num: hex(num) for num in range(16)}
     print(num_letter)
+
+"""Task4"""
 
 
 def num_a():
@@ -54,6 +59,8 @@ def num_a():
 
     number_a = {key: value.count('a') for key, value in food_prefs.items()}
     print(number_a)
+
+"""Task5"""
 
 
 def set_comp():
