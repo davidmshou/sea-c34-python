@@ -64,12 +64,29 @@ def num_a():
 
 
 def set_comp():
+    # Part a
     numbers = range(0, 21)
 
     s2 = {number for number in numbers if number % 2 == 0}
     s3 = {number for number in numbers if number % 3 == 0}
     s4 = {number for number in numbers if number % 4 == 0}
     print(s2, s3, s4)
+
+    # Part b
+    sets = s2, s3, s4 = (set(), set(), set())
+    for i, set_x in zip((2, 3, 4), sets):
+        for j in range(21):
+            if j % i == 0:
+                set_x.add(j)
+    print(s2)
+    print(s3)
+    print(s4)
+
+    # Part c
+    s2, s3, s4 = [{x for x in range(21) if x % y == 0} for y in range(2, 5)]
+    print(s2)
+    print(s3)
+    print(s4)
 
 if __name__ == "__main__":
     print_string()
