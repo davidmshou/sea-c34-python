@@ -66,6 +66,9 @@ def num_a():
 
 
 def set_comp():
+    """
+    Creates 3 sets, numbers 0-20, divisible by 2, 3, and 4, respectively.
+    """
     # Part a
     numbers = range(0, 21)
 
