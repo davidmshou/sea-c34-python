@@ -77,7 +77,7 @@ def set_comp():
     # Part b
     sets = s2, s3, s4 = (set(), set(), set())
     for i, set_x in zip((2, 3, 4), sets):
-        for j in range(21):
+        for j in numbers:
             if j % i == 0:
                 set_x.add(j)
     print(s2)
@@ -85,7 +85,7 @@ def set_comp():
     print(s4)
 
     # Part c
-    s2, s3, s4 = [{x for x in range(21) if x % y == 0} for y in range(2, 5)]
+    s2, s3, s4 = [{x for x in numbers if x % y == 0} for y in range(2, 5)]
     print(s2)
     print(s3)
     print(s4)
