@@ -1,4 +1,4 @@
-"Can I use the property of a class in string formatting?"
+"""Can I use the property of an object in string formatting?"""
 
 
 class Alpha(object):
@@ -15,5 +15,10 @@ class Alpha(object):
         del self._z
     z = property(_getz, _setz, _delz, doc="docstring")
 
+beta = Alpha(20)
 
-print("Alpha's value of x is %i." % (Alpha.z))
+print("Beta's value of z is %i." % (beta._getz()))
+
+beta._setz(15)
+
+print("Beta's value of z is now %i." % (beta._getz()))
