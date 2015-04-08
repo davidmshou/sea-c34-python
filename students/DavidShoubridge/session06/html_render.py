@@ -61,7 +61,7 @@ class OneLineTag(Element):
     """One Line Element."""
     def render(self, file_out, ind=""):
         """Override render function."""
-        file_out.write(ind + "<" + self.tag_name + ">")
+        file_out.write(ind + "<" + self.tag_name + self.attr + ">")
 
         for child in self.children:
             try:
@@ -78,14 +78,27 @@ class Title(OneLineTag):
 
 
 class SelfClosingTag(Element):
+    """A self closing tag."""
     def render(self, file_out, ind=u""):
         """Render the self-closing tag to HTML."""
         file_out.write(ind + "<" + self.tag_name + self.attr + "> \n")
 
 
 class Hr(SelfClosingTag):
+    """An hr tag."""
     tag_name = u"hr /"
 
 
 class Br(SelfClosingTag):
+    """A br tag."""
     tag_name = u"br /"
+
+
+class A(OneLineTag):
+    """'A' tag."""
+    tag_name = "a"
+
+    def __init__(self, link, content, **kwargs):
+        self.link = link
+        self.content = content
+        Element.__init__(self, content=None, href=link, **kwargs)
