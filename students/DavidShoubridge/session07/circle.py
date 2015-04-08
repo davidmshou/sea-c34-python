@@ -36,3 +36,21 @@ class Circle(object):
     @property
     def area(self):
         return self._area
+
+    def __str__(self):
+        return(u"Circle with radius: %.6f" % (self._radius))
+
+    def __repr__(self):
+        return(u"Circle(%i)" % (self._radius))
+
+    def __add__(self, other):
+        return(Circle(self._radius + other._radius))
+
+    def __mul__(self, other):
+        return(Circle(self._radius * other))
+
+    def __cmp__(self, other):
+        return(self._radius - other._radius)
+
+    def __ne__(self, other):
+        return(self._radius != other._radius)
