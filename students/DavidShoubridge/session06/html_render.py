@@ -43,3 +43,28 @@ class Body(Element):
 class P(Element):
     """Paragraph element."""
     tag_name = u"p"
+
+
+class Head(Element):
+    """Head element."""
+    tag_name = u"head"
+
+
+class OneLineTag(Element):
+    """One Line Element."""
+    def render(self, file_out, ind=""):
+        """Override render function."""
+        file_out.write(ind + "<" + self.tag_name + ">")
+
+        for child in self.children:
+            try:
+                child.render(file_out, ind="")
+            except AttributeError:
+                file_out.write(unicode(child))
+
+        file_out.write("</" + self.tag_name + ">\n")
+
+
+class Title(OneLineTag):
+    """Title element."""
+    tag_name = u"title"
