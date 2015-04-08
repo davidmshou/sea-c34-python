@@ -39,7 +39,21 @@ class Element(object):
 
 class Html(Element):
     """Html element"""
+    header = u"<!DOCTYPE html>"
     tag_name = u"html"
+
+    def render(self, file_out, ind=u""):
+        """Render the new element to HTML."""
+        file_out.write(self.header + "\n")
+        file_out.write(ind + "<" + self.tag_name + self.attr + ">\n")
+
+        for child in self.children:
+            try:
+                child.render(file_out, self.indentation + ind)
+            except AttributeError:
+                file_out.write(self.indentation + ind + unicode(child) + "\n")
+
+        file_out.write(ind + "</" + self.tag_name + ">\n")
 
 
 class Body(Element):
@@ -120,3 +134,7 @@ class H(OneLineTag):
     def __init__(self, level, content=None, **kwargs):
         self.tag_name = "h%i" % (level)
         Element.__init__(self, content, **kwargs)
+
+
+class Meta(SelfClosingTag):
+    tag_name = "meta"
