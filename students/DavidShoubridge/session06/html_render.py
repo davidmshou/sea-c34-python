@@ -3,7 +3,7 @@ from __future__ import print_function
 
 
 class Element(object):
-    """HTML element"""
+    """Parent element"""
     tag_name = u"html"
     indentation = u"    "
 
@@ -21,7 +21,7 @@ class Element(object):
             self.attr = " %s=%s" % (key, value)
 
     def append(self, element):
-        """Append new string to content."""
+        """Append new element to content."""
         self.children.append(element)
 
     def render(self, file_out, ind=u""):
@@ -74,7 +74,7 @@ class Head(Element):
 class OneLineTag(Element):
     """One Line Element."""
     def render(self, file_out, ind=""):
-        """Override render function."""
+        """Override original render function for one line output."""
         file_out.write(ind + "<" + self.tag_name + self.attr + ">")
 
         for child in self.children:
@@ -94,7 +94,9 @@ class Title(OneLineTag):
 class SelfClosingTag(Element):
     """A self closing tag."""
     def render(self, file_out, ind=u""):
-        """Render the self-closing tag to HTML."""
+        """
+        Override the render function to render a self-closing tag to HTML.
+        """
         file_out.write(ind + "<" + self.tag_name + self.attr + "> \n")
 
 
@@ -137,4 +139,5 @@ class H(OneLineTag):
 
 
 class Meta(SelfClosingTag):
+    """Meta tag."""
     tag_name = "meta"
