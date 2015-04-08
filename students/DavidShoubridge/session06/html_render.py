@@ -75,3 +75,17 @@ class OneLineTag(Element):
 class Title(OneLineTag):
     """Title element."""
     tag_name = u"title"
+
+
+class SelfClosingTag(Element):
+    def render(self, file_out, ind=u""):
+        """Render the self-closing tag to HTML."""
+        file_out.write(ind + "<" + self.tag_name + self.attr + "> \n")
+
+
+class Hr(SelfClosingTag):
+    tag_name = u"hr /"
+
+
+class Br(SelfClosingTag):
+    tag_name = u"br /"
