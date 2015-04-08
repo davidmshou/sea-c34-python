@@ -10,4 +10,4 @@ class Circle(object):
 
     def __init__(self, radius, diameter=0):
         self.radius = radius
-        self.diameter = diameter if (diameter > 0) else (self.radius * 2)
+        self.diameter = diameter if diameter else (self.radius * 2)
