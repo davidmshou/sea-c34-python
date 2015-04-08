@@ -3,14 +3,30 @@ from __future__ import print_function
 
 
 class Element(object):
-
-    tag_name = u""
+    """HTML element"""
+    tag_name = u"html"
     indentation = u"    "
 
     def __init__(self, content=None):
-        self.content = content
+        if content is True:
+            self.content += content
+        else:
+            self.content = ""
 
-    def append(self, content):
-        pass
+    def append(self, element):
+        """Append new string to content."""
+        self.content += (self.indentation + str(element))
 
     def render(self, file_out, ind=""):
+        """Render the new element to HTML."""
+        file_out.write(self.indentation + "<" + self.tag_name + ">\n"
+                       + self.indentation + self.content + "\n"
+                       + self.indentation + "</" + self.tag_name + ">")
+
+
+class Body(Element):
+    tag_name = u"Body"
+
+
+class P(Element):
+    tag_name = u"p"
