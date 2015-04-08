@@ -7,19 +7,26 @@ class Element(object):
     tag_name = u"html"
     indentation = u"    "
 
-    def __init__(self, content=None):
+    def __init__(self, content=None, **kwargs):
         if content:
             self.children = [content]
         else:
             self.children = []
 
+        self.attributes = kwargs
+
+        self.attr = ""
+
+        for key, value in self.attributes.items():
+            self.attr = " %s=%s" % (key, value)
+
     def append(self, element):
         """Append new string to content."""
         self.children.append(element)
 
-    def render(self, file_out, ind=""):
+    def render(self, file_out, ind=u""):
         """Render the new element to HTML."""
-        file_out.write(ind + "<" + self.tag_name + ">\n")
+        file_out.write(ind + "<" + self.tag_name + self.attr + ">\n")
 
         for child in self.children:
             try:
