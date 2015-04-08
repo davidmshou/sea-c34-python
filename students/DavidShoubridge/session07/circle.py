@@ -8,5 +8,6 @@ import math
 
 class Circle(object):
 
-    def __init__(self, radius):
+    def __init__(self, radius, diameter=0):
         self.radius = radius
+        self.diameter = diameter if (diameter > 0) else (self.radius * 2)
