@@ -8,25 +8,38 @@ class Element(object):
     indentation = u"    "
 
     def __init__(self, content=None):
-        if content is True:
-            self.content += content
+        if content:
+            self.children = [content]
         else:
-            self.content = ""
+            self.children = []
 
     def append(self, element):
         """Append new string to content."""
-        self.content += (self.indentation + str(element))
+        self.children.append(element)
 
     def render(self, file_out, ind=""):
         """Render the new element to HTML."""
-        file_out.write(self.indentation + "<" + self.tag_name + ">\n"
-                       + self.indentation + self.content + "\n"
-                       + self.indentation + "</" + self.tag_name + ">")
+        file_out.write(ind + "<" + self.tag_name + ">\n")
+
+        for child in self.children:
+            try:
+                child.render(file_out, self.indentation + ind)
+            except AttributeError:
+                file_out.write(self.indentation + ind + unicode(child) + "\n")
+
+        file_out.write(ind + "</" + self.tag_name + ">\n")
+
+
+class Html(Element):
+    """Html element"""
+    tag_name = u"html"
 
 
 class Body(Element):
-    tag_name = u"Body"
+    """Body element."""
+    tag_name = u"body"
 
 
 class P(Element):
+    """Paragraph element."""
     tag_name = u"p"
