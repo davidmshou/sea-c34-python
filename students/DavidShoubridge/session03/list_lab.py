@@ -5,80 +5,80 @@ my_list = ["Bananas"] + my_list
 print(my_list)
 
 
-def user_input():
-    fruit_input = raw_input("Give me a fruit to add to our list:")
+# def user_input():
+#     fruit_input = raw_input("Give me a fruit to add to our list:")
 
-    my_list.append(fruit_input)
+#     my_list.append(fruit_input)
 
-    print(my_list)
+#     print(my_list)
 
-    number_input = raw_input("Enter a number:")
+#     number_input = raw_input("Enter a number:")
 
-    print(number_input)
+#     print(number_input)
 
-    number_input = int(number_input)
+#     number_input = int(number_input)
 
-    print(my_list[(number_input - 1)])
+#     print(my_list[(number_input - 1)])
 
-    my_list.insert(0, "Pineapple")
+#     my_list.insert(0, "Pineapple")
 
-    print(my_list)
+#     print(my_list)
 
-    for fruit in my_list:
-        if fruit[0] == "P":
-            print fruit
+#     for fruit in my_list:
+#         if fruit[0] == "P":
+#             print fruit
 
-user_input()
+# user_input()
 
-print(my_list)
+# print(my_list)
 
-del my_list[-1]
+# del my_list[-1]
 
-print(my_list)
-
-
-def remove_fruit():
-    remove_input = raw_input("Which fruit would you like to remove?:")
-
-    for fruit in my_list:
-        if fruit.lower() == remove_input.lower():
-            my_list.remove(fruit)
-
-    print(my_list)
-
-remove_fruit()
+# print(my_list)
 
 
-def user_preference():
-    my_tuple = tuple(my_list)
+# def remove_fruit():
+#     remove_input = raw_input("Which fruit would you like to remove?:")
 
-    for fruit in my_tuple:
-        while True:
-            user_preference = raw_input("Do you like %s :" % fruit.lower())
-            if user_preference.lower() == "yes" or user_preference.lower() == "no":
-                break
-            else:
-                print("Only enter 'yes' or 'no'")
-        if user_preference.lower() == "no":
-            my_list.remove(fruit)
-    print(my_list)
+#     for fruit in my_list:
+#         if fruit.lower() == remove_input.lower():
+#             my_list.remove(fruit)
 
-user_preference()
+#     print(my_list)
+
+# remove_fruit()
 
 
-list_copy = my_list[:]
+# def user_preference():
+#     my_tuple = tuple(my_list)
+
+#     for fruit in my_tuple:
+#         while True:
+#             user_preference = raw_input("Do you like %s :" % fruit.lower())
+#             if user_preference.lower() == "yes" or user_preference.lower() == "no":
+#                 break
+#             else:
+#                 print("Only enter 'yes' or 'no'")
+#         if user_preference.lower() == "no":
+#             my_list.remove(fruit)
+#     print(my_list)
+
+# user_preference()
 
 
-def reverse_letter(copy):
-    swapped = ""
-    for fruit in reversed(copy):
-        swapped += fruit[::-1] + " "
-    print(swapped)
+# list_copy = my_list[:]
 
-reverse_letter(list_copy)
 
-del(my_list[-1])
+# def reverse_letter(copy):
+#     swapped = ""
+#     for fruit in reversed(copy):
+#         swapped += fruit[::-1] + " "
+#     print(swapped)
 
-print(my_list)
+# reverse_letter(list_copy)
 
-print(list_copy)
+# del(my_list[-1])
+
+# print(my_list)
+
+# print(list_copy)
