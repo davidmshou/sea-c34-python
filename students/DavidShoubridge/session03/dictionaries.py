@@ -13,7 +13,7 @@ def add_list(n):
     new_dictionary["name"] = n
     print(new_dictionary)
 
-add_list(name_list)
+# add_list(name_list)
 
 
 def iterate_through_dict(example_dict):
@@ -28,10 +28,10 @@ def iterate_through_dict(example_dict):
         if v == "43":
             print("%s" % (v))
 
-iterate_through_dict(new_dictionary)
+# iterate_through_dict(new_dictionary)
 
 
-my_set = set([1, 2, 3, 4, 5, 6])
+# my_set = set([1, 2, 3, 4, 5, 6])
 
 
 def set_popper(n):
@@ -44,7 +44,7 @@ def set_popper(n):
     """
     print(n.pop())  # Error for popping specific value. Apparently not possible
 
-set_popper(my_set)
+# set_popper(my_set)
 
 
 def set_remover(n):
@@ -58,5 +58,9 @@ def set_remover(n):
     n.remove(6)  # Returns error remove() takes exactly 1 argument.
     # Will need further research to find alternate method.
 
-set_remover(my_set)
-print(my_set)
+# set_remover(my_set)
+# print(my_set)
+
+if __name__ == '__main__':
+    add_list(name_list)
+    assert(new_dictionary["age"] == "43")
