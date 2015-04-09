@@ -10,8 +10,6 @@ class Circle(object):
 
     def __init__(self, radius):
         self._radius = radius
-        self._diameter = radius * 2
-        self._area = math.pi * radius ** 2
 
     @property
     def radius(self):
@@ -20,22 +18,22 @@ class Circle(object):
     @radius.setter
     def radius(self, radius):
         self._radius = radius
-        self._diameter = radius * 2
-        self._area = math.pi * radius ** 2
 
     @property
     def diameter(self):
-        return self._diameter
+        return self._radius * 2
 
     @diameter.setter
     def diameter(self, diameter):
-        self._diameter = diameter
         self._radius = diameter / 2
-        self._area = math.pi * (diameter / 2) ** 2
 
     @property
     def area(self):
-        return self._area
+        return math.pi * self._radius ** 2
+
+    @classmethod
+    def from_diameter(cls, diameter):
+        return cls(diameter / 2)
 
     def __str__(self):
         return(u"Circle with radius: %.6f" % (self._radius))
